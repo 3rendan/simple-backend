@@ -2,16 +2,17 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
 const axios = require('axios')
+require('dotenv').config()
 
 const config = {
-  headers: { Authorization: `Token token=e30660bc4a1f0d005a74ba56e705eca2`}
+  headers: { Authorization: `Token token=${process.env.API_TOKEN}`}
 }
 
 app.use(bodyParser.json())
 
 app.get('/podcasts', async (req, res) => {
   try {
-    const response = await axios.get(`https://cms.megaphone.fm/api/networks/126216ae-056d-11ee-9189-676656f0e82d/podcasts`, config);
+    const response = await axios.get(`${process.env.API_URL}/podcasts`, config);
     res.status(200).json( response.data );
   } catch (error) {
     res.json(error);

@@ -1,5 +1,3 @@
-Dockerfile
-# Use the official Node.js image as the base image
 FROM node:14
 USER node
  
@@ -11,6 +9,6 @@ RUN npm install
 COPY --chown=node:node ./ ./
 
 # Expose the port on which the server will run
-EXPOSE 5000
+EXPOSE 3001
 # Start the server
 CMD ["npm", "start"]
