@@ -12,21 +12,22 @@ app.use(bodyParser.json())
 
 app.get('/podcasts', async (req, res) => {
   try {
-    const response = await axios.get(`https://cms.megaphone.fm/api/networks/126216ae-056d-11ee-9189-676656f0e82d/podcasts`, config);
-    res.status(200).json( response.data );
+    const response = await axios.get(`https://cms.megaphone.fm/api/networks/126216ae-056d-11ee-9189-676656f0e82d/podcasts`, config)
+    res.status(200).json( response.data )
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
-});
+})
 
-app.get(`/podcast`, async (podcast_id, res) => {
+app.post(`/episodes/`, async (req, res) => {
+  // const res = await axios.get(`https://cms.megaphone.fm/api/networks/126216ae-056d-11ee-9189-676656f0e82d/podcasts/${id}/episodes`, config)
   try {
-    const response = await axios.get(`https://cms.megaphone.fm/api/networks/126216ae-056d-11ee-9189-676656f0e82d/podcasts/?podcast_id=${podcast_id}/episodes?`, config);
-    res.status(200).json( response.data );
+    const response = await axios.get(`https://cms.megaphone.fm/api/networks/126216ae-056d-11ee-9189-676656f0e82d/podcasts/${req.body.id}/episodes`, config)
+    res.status(200).json( response.data )
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
-});
+})
 
 app.listen(8080, () => {
   console.log('listening on port 8080')
