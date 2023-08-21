@@ -1,6 +1,6 @@
 {
   "name": "simple-backend",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A server to get data from the megaphone api to serve within the APT-Podcast site.",
   "main": "server.js",
   "scripts": {
