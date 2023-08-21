@@ -19,10 +19,27 @@ app.get('/podcasts', async (req, res) => {
   }
 })
 
-app.post(`/episodes/`, async (req, res) => {
-  // const res = await axios.get(`https://cms.megaphone.fm/api/networks/126216ae-056d-11ee-9189-676656f0e82d/podcasts/${id}/episodes`, config)
+app.get(`/AE-episodes`, async (req, res) => {
   try {
-    const response = await axios.get(`https://cms.megaphone.fm/api/networks/126216ae-056d-11ee-9189-676656f0e82d/podcasts/${req.body.id}/episodes`, config)
+    const response = await axios.get(`https://cms.megaphone.fm/api/networks/126216ae-056d-11ee-9189-676656f0e82d/podcasts/06c45fb2-1c17-11ee-9eb6-ff2ec7065f86/episodes`, config)
+    res.status(200).json( response.data )
+  } catch (error) {
+    console.log(error)
+  }
+})
+
+app.get(`/gravy-episodes`, async (req, res) => {
+  try {
+    const response = await axios.get(`https://cms.megaphone.fm/api/networks/126216ae-056d-11ee-9189-676656f0e82d/podcasts/f5054664-21a3-11ee-8031-c7f78aa2421e/episodes`, config)
+    res.status(200).json( response.data )
+  } catch (error) {
+    console.log(error)
+  }
+})
+
+app.get(`/food-episodes`, async (req, res) => {
+  try {
+    const response = await axios.get(`https://cms.megaphone.fm/api/networks/126216ae-056d-11ee-9189-676656f0e82d/podcasts/299729f4-056d-11ee-974e-f7d1b7547a45/episodes`, config)
     res.status(200).json( response.data )
   } catch (error) {
     console.log(error)
