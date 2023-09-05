@@ -2,6 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
 const axios = require('axios')
+const cors = require('cors')
 require('dotenv').config()
 
 const config = {
@@ -9,7 +10,7 @@ const config = {
 }
 
 app.use(bodyParser.json())
-
+app.use(cors())
 app.get('/podcasts', async (req, res) => {
   try {
     const response = await axios.get(`https://cms.megaphone.fm/api/networks/126216ae-056d-11ee-9189-676656f0e82d/podcasts`, config)
@@ -46,6 +47,6 @@ app.get(`/food-episodes`, async (req, res) => {
   }
 })
 
-app.listen(8080, () => {
-  console.log('listening on port 8080')
+app.listen(80, () => {
+  console.log('listening on port 80')
 })
